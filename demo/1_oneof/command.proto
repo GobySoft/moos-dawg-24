@@ -1,0 +1,88 @@
+syntax = "proto2";
+
+import "dccl/option_extensions.proto";
+
+package moos.dawg;
+
+message Command
+{
+    option (dccl.msg) = {
+        id: 124
+        max_bytes: 32
+        codec_version: 4
+        unit_system: "si"
+    };
+
+    enum Action
+    {
+        MEASURE_THERMOCLINE = 1;
+        SEARCH_FOR_OCEAN_FRONT = 2;
+        SEARCH_FOR_MISSING_AIRPLANE = 3;
+    }
+
+    message ThermoclineParams
+    {
+        required int32 max_search_depth = 1 [(dccl.field) = {
+            min: 10
+            max: 1000
+            units: { derived_dimensions: "length" }
+        }];
+    }
+
+    message FrontParams
+    {
+        required double temperature_threshold = 1 [(dccl.field) = {
+            min: 0.1
+            max: 2
+            resolution: 0.1
+            units {
+                derived_dimensions: "temperature"
+                system: "celsius"
+                relative_temperature: true
+            }
+        }];
+    }
+
+    message PlaneParams
+    {
+        required int32 center_freq = 1 [(dccl.field) = {
+            min: 30000
+            max: 40000
+            resolution: 100
+            units { derived_dimensions: "frequency" }
+        }];
+        required int32 bandwidth = 2 [(dccl.field) = {
+            min: 100
+            max: 10000
+            resolution: 100
+            units { derived_dimensions: "frequency" }
+        }];
+    }
+
+    required Action action = 1;
+
+    oneof parameters
+    {
+        ThermoclineParams thermocline = 2;  // for action == MEASURE_THERMOCLINE
+        FrontParams front = 3;     // for action == SEARCH_FOR_OCEAN_FRONT
+        PlaneParams airplane = 4;  // for action == SEARCH_FOR_MISSING_AIRPLANE
+    }
+}
+
+message CommandWithoutOneOf
+{
+    option (dccl.msg) = {
+        id: 125
+        max_bytes: 32
+        codec_version: 3
+        unit_system: "si"
+    };
+
+    required Command.Action action = 1;
+
+    optional Command.ThermoclineParams thermocline =
+        2;                           // for action == MEASURE_THERMOCLINE
+    optional Command.FrontParams front = 3;  // for action == SEARCH_FOR_OCEAN_FRONT
+    optional Command.PlaneParams airplane =
+        4;  // for action == SEARCH_FOR_MISSING_AIRPLANE
+}
