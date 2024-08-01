@@ -4,7 +4,7 @@ import "dccl/option_extensions.proto";
 
 package moos.dawg;
 
-message Command
+message OriginalCommandWithHash
 {
     option (dccl.msg) = {
         id: 124
@@ -67,4 +67,7 @@ message Command
         FrontParams front = 3;     // for action == SEARCH_FOR_OCEAN_FRONT
         PlaneParams airplane = 4;  // for action == SEARCH_FOR_MISSING_AIRPLANE
     }
+
+    required uint32 hash = 5
+        [(dccl.field).codec = "dccl.hash", (dccl.field).max = 0xFFFF];
 }
