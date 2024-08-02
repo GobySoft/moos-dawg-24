@@ -52,3 +52,13 @@ This example uses two C++ MOOS apps (pCommand and pSender) to demonstrate using 
 cd /opt/moos-dawg-24/demo/4_moos
 ./demo.sh
 ```
+
+Then you can look at the output of uXMS, etc. one at a time using
+
+```
+screen -r mm1.uXMS
+CTRL-A D
+screen -r mm2.uXMS
+CTRL-A D
+// etc.
+```
