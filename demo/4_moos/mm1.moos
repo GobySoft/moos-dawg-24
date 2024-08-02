@@ -1,0 +1,95 @@
+ServerHost = localhost
+ServerPort = 9101
+Community = mm1
+LatOrigin = 0
+LongOrigin = 0
+ProcessConfig = ANTLER
+{
+    MSBetweenLaunches = 10
+    Run = MOOSDB @ NewConsole = false
+    Run = pAcommsHandler @ NewConsole = true, XConfig = 1
+    Run = uXMS @ NewConsole = true, XConfig = 2
+    Run = pCommand @ NewConsole = true, XConfig = 3
+    1 = -geometry,80x100+0+0
+    2 = -geometry,80x15+600+230
+    3 = -geometry,80x15+600+530
+}
+ProcessConfig = pAcommsHandler
+{
+    common {
+        log: false
+        verbosity: DEBUG1
+        show_gui: true
+        }
+    modem_id: 1
+    driver_cfg {
+        driver_type: DRIVER_UDP_MULTICAST
+        [goby.acomms.udp_multicast.protobuf.config] {
+          multicast_address: "239.142.0.1"
+          multicast_port: 50021
+          max_frame_size: 1024
+        }
+    }
+    mac_cfg {
+        type: MAC_FIXED_DECENTRALIZED
+        slot { src: 1 type: DATA slot_seconds: 10 }
+        slot { src: 2 type: DATA slot_seconds: 10 }
+    }
+    queue_cfg {
+        message_entry {
+            protobuf_name: "moos.dawg.Command"
+            ack: true
+            ttl: 300
+            value_base: 10
+            role { type: SOURCE_ID
+                   setting: STATIC
+                   static_value: 1 }
+            role { type: DESTINATION_ID
+                   setting: STATIC
+                   static_value: 2 }
+        }
+        message_entry {
+            protobuf_name: "moos.dawg.Status"
+            ack: false
+            ttl: 300
+            value_base: 2
+            role { type: SOURCE_ID
+                   setting: STATIC
+                   static_value: 2 }
+            role { type: DESTINATION_ID
+                   setting: STATIC
+                   static_value: 1 }
+        }
+    }
+    translator_entry {
+        protobuf_name: "moos.dawg.Command"
+        trigger { type: TRIGGER_PUBLISH moos_var: "COMMAND_OUT" }
+        create {
+            technique: TECHNIQUE_PREFIXED_PROTOBUF_TEXT_FORMAT
+            moos_var: "COMMAND_OUT"
+        }
+        publish {
+            technique: TECHNIQUE_PREFIXED_PROTOBUF_TEXT_FORMAT
+            moos_var: "COMMAND_IN"
+        }
+    }
+    translator_entry {
+        protobuf_name: "moos.dawg.Status"
+        trigger { type: TRIGGER_PUBLISH  moos_var: "STATUS_OUT" }
+        create {
+            technique: TECHNIQUE_PREFIXED_PROTOBUF_TEXT_FORMAT
+            moos_var: "STATUS_OUT"
+        }
+        publish {
+            technique: TECHNIQUE_PREFIXED_PROTOBUF_TEXT_FORMAT
+            moos_var: "STATUS_IN"
+        }
+    }
+
+    load_proto_file: "updated_command.proto"
+    load_proto_file: "status.proto"
+}
+ProcessConfig = uXMS
+{
+    VAR = COMMAND_OUT, COMMAND_IN, STATUS_OUT, STATUS_IN
+}
