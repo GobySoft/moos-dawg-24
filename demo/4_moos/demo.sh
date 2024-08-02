@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./stop_moos.sh
+
 (mkdir -p apps/build
 cd apps/build
 cmake ..
@@ -9,11 +11,9 @@ export PATH=./apps/build:$PATH
 
 which pCommand pStatus
 
-pAntler mm1.moos &
-pAntler mm2.moos &
+pAntler mm1.moos >& /dev/null &
+pAntler mm2.moos >& /dev/null &
 
+sleep 1
 
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
-
-while [ 1 ]; do sleep 1; done
-
+screen -ls

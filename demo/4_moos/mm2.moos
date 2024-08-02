@@ -7,13 +7,9 @@ ProcessConfig = ANTLER
 {
     MSBetweenLaunches = 10
     Run = MOOSDB @ NewConsole = false
-    Run = pAcommsHandler @ NewConsole = true, XConfig = 1
-    Run = uXMS @ NewConsole = true, XConfig = 2
-    Run = pStatus @ NewConsole = true, XConfig = 3 
-    
-    1 = -geometry,80x100-0+0
-    2 = -geometry,80x15-600+230
-    3 = -geometry,80x15-600+530
+    Run = pAcommsHandler @ LaunchType=Screen
+    Run = uXMS @ LaunchType=Screen
+    Run = pStatus @ LaunchType=Screen    
 }
 ProcessConfig = pAcommsHandler
 {
@@ -93,4 +89,6 @@ ProcessConfig = pAcommsHandler
 ProcessConfig = uXMS
 {
     VAR = COMMAND_OUT, COMMAND_IN, STATUS_OUT, STATUS_IN
+    display_source = true
+    display_time = true
 }

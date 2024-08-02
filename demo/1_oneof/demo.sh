@@ -27,7 +27,7 @@ function encode_decode_demo()
 echo ''
 echo '```'
 dccl --display_proto --proto_file command.proto
-echo '```') | md.py
+echo '```') | ./md.py
 
 user_wait
 
@@ -35,7 +35,7 @@ user_wait
 echo ''
 echo '```'
 dccl --analyze --proto_file command.proto -m moos.dawg.CommandWithoutOneOf
-echo '```') | md.py
+echo '```') | ./md.py
 
 user_wait
 
@@ -43,24 +43,24 @@ user_wait
 echo ''
 echo '```'
 dccl --analyze --proto_file command.proto -m moos.dawg.Command
-echo '```') | md.py
+echo '```') | ./md.py
 
 user_wait
 
 
 (echo "# Example 1 (MEASURE_THERMOCLINE)"
 original1="action: MEASURE_THERMOCLINE thermocline { max_search_depth: 100 }"
-encode_decode_demo "$original1") | md.py
+encode_decode_demo "$original1") | ./md.py
 
 user_wait
 
 (echo "# Example 2 (SEARCH_FOR_OCEAN_FRONT)"
 original2="action: SEARCH_FOR_OCEAN_FRONT front { temperature_threshold: 0.9 }"
-encode_decode_demo "$original2") | md.py
+encode_decode_demo "$original2") | ./md.py
 
 user_wait
 
 (echo "# Example 3 (SEARCH_FOR_MISSING_AIRPLANE)"
 original3="action: SEARCH_FOR_MISSING_AIRPLANE airplane { center_freq: 37500 bandwidth: 1000 }"
-encode_decode_demo "$original3") | md.py
+encode_decode_demo "$original3") | ./md.py
 

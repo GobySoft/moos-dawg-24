@@ -14,7 +14,7 @@ protoc --python_out=. updated_command_with_hash.proto
 echo ''
 echo '```'
 diff -u command.proto updated_command.proto
-echo '```') | md.py
+echo '```') | ./md.py
 
 user_wait
 
@@ -22,7 +22,7 @@ user_wait
 echo ''
 echo '```'
 diff -u updated_command.proto updated_command_with_hash.proto
-echo '```') | md.py
+echo '```') | ./md.py
 
 user_wait
 
@@ -35,7 +35,7 @@ user_wait
  dccl --analyze --proto_file updated_command.proto -m moos.dawg.Command -H
  echo ""
  echo "When possible you can compare these at compile time to detect unexpected backwards compatibility problems"
-) | md.py
+) | ./md.py
 
 user_wait
 
