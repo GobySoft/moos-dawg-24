@@ -25,6 +25,8 @@ cd /opt/moos-dawg-24/demo/1_oneof
 ./demo.sh
 ```
 
+or you can look at the [already generated output](demo/1_oneof/demo-result.md) produced by the [demo.sh](demo/1_oneof/demo.sh) shell script. 
+
 ## Demo 2 (dynamic conditions)
 
 This example demonstrates the use of Dynamic Conditions using C++.
@@ -35,6 +37,8 @@ cd /opt/moos-dawg-24/demo/2_dynamic_conditions
 ./demo.sh
 ```
 
+or you can look at the [already generated output](demo/2_dynamic_conditions/demo-result.md) produced by the [demo.cpp](demo/2_dynamic_conditions/demo.cpp) C++ code as called by the [demo.sh](demo/2_dynamic_conditions/demo.sh) shell script. 
+
 ## Demo 3 (message hash)
 
 This example demonstrates the use of message hashing using the `dccl` command line tool (for static hash comparison) and Python (for messages based hash comparison).
@@ -43,6 +47,9 @@ This example demonstrates the use of message hashing using the `dccl` command li
 cd /opt/moos-dawg-24/demo/3_hash
 ./demo.sh
 ```
+
+
+or you can look at the [already generated output](demo/3_hash/demo-result.md)  produced by the [demo.py](demo/3_hash/demo.py) Python code as called by the [demo.sh](demo/3_hash/demo.sh) shell script. 
 
 ## Demo 4 (MOOS example)
 

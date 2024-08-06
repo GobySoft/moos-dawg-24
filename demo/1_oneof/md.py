@@ -7,7 +7,8 @@ input = ''
 for line in sys.stdin:
     input += line
 
-console = Console()
-md = Markdown(input)
-console.print(md)
+#console = Console()
+#md = Markdown(input)
+#console.print(md)
 
+print(input)
