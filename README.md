@@ -5,9 +5,11 @@ Requires MOOS, Goby, DCCL, Python to run all the examples.
 
 The demo intentionally use a mix of shell scripts, C++, and Python to show the various ways you can interact with DCCL. 
 
+You can run these on your computer or you can simply browse to the input and output for all the demos except the MOOS one - see the Demo 1, 2, and 3 sections below).
+
 ## Run in docker
 
-The easiest way to start playing with these examples is to run them in docker (or you can look directly at the generated output for all the demos except the MOOS one). To do so, install docker and run
+The easiest way to start playing with these examples is to run them in docker. To do so, install docker and run
 
 ```
 docker run -it gobysoft/moos-dawg-2024
