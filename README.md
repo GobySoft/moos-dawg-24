@@ -7,7 +7,7 @@ The demo intentionally use a mix of shell scripts, C++, and Python to show the v
 
 ## Run in docker
 
-The easiest way to start playing with these examples is to run them in docker. To do so, install docker and run
+The easiest way to start playing with these examples is to run them in docker (or you can look directly at the generated output for all the demos except the MOOS one). To do so, install docker and run
 
 ```
 docker run -it gobysoft/moos-dawg-2024
