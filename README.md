@@ -25,7 +25,7 @@ cd /opt/moos-dawg-24/demo/1_oneof
 ./demo.sh
 ```
 
-or you can look at the [already generated output](demo/1_oneof/demo-result.md) produced by the [demo.sh](demo/1_oneof/demo.sh) shell script. 
+or you can look at the [already generated output](demo/1_oneof/demo-result.md) produced by the [demo.sh](demo/1_oneof/demo.sh) shell script using the [command.proto](demo/1_oneof/command.proto) DCCL message. 
 
 ## Demo 2 (dynamic conditions)
 
@@ -37,7 +37,7 @@ cd /opt/moos-dawg-24/demo/2_dynamic_conditions
 ./demo.sh
 ```
 
-or you can look at the [already generated output](demo/2_dynamic_conditions/demo-result.md) produced by the [demo.cpp](demo/2_dynamic_conditions/demo.cpp) C++ code as called by the [demo.sh](demo/2_dynamic_conditions/demo.sh) shell script. 
+or you can look at the [already generated output](demo/2_dynamic_conditions/demo-result.md) produced by the [demo.cpp](demo/2_dynamic_conditions/demo.cpp) C++ code as called by the [demo.sh](demo/2_dynamic_conditions/demo.sh) shell script using the [status.proto](demo/2_dynamic_conditions/status.proto) DCCL message. 
 
 ## Demo 3 (message hash)
 
@@ -49,7 +49,7 @@ cd /opt/moos-dawg-24/demo/3_hash
 ```
 
 
-or you can look at the [already generated output](demo/3_hash/demo-result.md)  produced by the [demo.py](demo/3_hash/demo.py) Python code as called by the [demo.sh](demo/3_hash/demo.sh) shell script. 
+or you can look at the [already generated output](demo/3_hash/demo-result.md)  produced by the [demo.py](demo/3_hash/demo.py) Python code as called by the [demo.sh](demo/3_hash/demo.sh) shell script using the [original_command_with_hash.proto](demo/3_hash/original_command_with_hash.proto) and [updated_command_with_hash.proto](demo/3_hash/updated_command_with_hash.proto) DCCL messages. 
 
 ## Demo 4 (MOOS example)
 
