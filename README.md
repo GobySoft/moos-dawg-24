@@ -1,5 +1,5 @@
 # moos-dawg-24
-Demonstrations for MOOS-DAWG 2024 talk (DCCL4 in MOOS)
+Demonstrations for MOOS-DAWG 2024 talk ([DCCL4 in MOOS](presentation/schneider-moos-dawg-2024-dccl4.pdf)).
 
 Requires MOOS, Goby, DCCL, Python to run all the examples.
 
